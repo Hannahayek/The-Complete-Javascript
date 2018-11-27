@@ -1,12 +1,18 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
+//this will return with results
+calulateAge(1984);
+function calulateAge(year){
+    console.log(2018-year);
+}
 
 
+var retirement=function(year){
+    console.log(65-(2018-year));
+}
 
 
-
-
-
+retirement(1984); //if we move retirement above the function, it will fail to compile, variable, no hoisting
 
 
 
