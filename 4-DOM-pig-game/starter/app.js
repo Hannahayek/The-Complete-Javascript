@@ -9,19 +9,28 @@ GAME RULES:
 
 */
 
-var scores,RoundScore,activePlayer,dice;
+var scores,RoundScore,activePlayer;
 
 scores=[0,0];
 RoundScore=0;
 activePlayer=0;
 
-dice=Math.floor(Math.random()*6)+1;  //+1 not to get 0
-document.querySelector('#current-'+activePlayer).textContent=dice;
-//document.querySelector('#current-'+activePlayer).innerHtel='<em>+dice+</em>';
-
-
-var x=document.querySelector('#score-0').textContent;
-console.log(x);
-
-
 document.querySelector('.dice').style.display='none'; //to hide the dice
+document.getElementById('score-0').textContent='0';
+document.getElementById('score-1').textContent='0';
+document.getElementById('current-0').textContent='0';
+document.getElementById('current-1').textContent='0';
+
+document.querySelector('.btn-roll').addEventListener('click',function(){
+    //1>Random number
+   var dice=Math.floor(Math.random()*6)+1; //+1 to avoid number 0
+   
+   //2 display the result
+   var diceDom=document.querySelector('.dice');
+   diceDom.style.display='block';
+   diceDom.src='dice-'+dice+'.png';
+
+
+    //3.update the round score if the rolled number was not a 1
+
+});  
