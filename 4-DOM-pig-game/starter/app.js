@@ -32,5 +32,28 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
 
 
     //3.update the round score if the rolled number was not a 1
+ 
+    if(dice !==1){
+        //add score
+        RoundScore +=dice;
+      
+        document.getElementById('current-'+ activePlayer).textContent=RoundScore;
+
+    }else{
+     //next player
+     activePlayer===0 ? activePlayer=1:activePlayer=0;
+     RoundScore=0;
+     document.getElementById('current-0').textContent='0';
+     document.getElementById('current-1').textContent='0';
+     //toggle will add if not there, or remove if there.works as 2 lines below commented
+     document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    document.querySelector('.dice').style.display="none"; 
+
+     //document.querySelector('.player-0-panel').classList.remove('active');
+     //document.querySelector('.player-1-panel').classList.add('active');
+    }
+
 
 });  
