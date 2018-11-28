@@ -10,16 +10,11 @@ GAME RULES:
 */
 
 var scores,RoundScore,activePlayer;
+     
+resetgame();
 
-scores=[0,0];
-RoundScore=0;
-activePlayer=0;
 
-document.querySelector('.dice').style.display='none'; //to hide the dice
-document.getElementById('score-0').textContent='0';
-document.getElementById('score-1').textContent='0';
-document.getElementById('current-0').textContent='0';
-document.getElementById('current-1').textContent='0';
+
 
 document.querySelector('.btn-roll').addEventListener('click',function(){
     //1>Random number
@@ -82,4 +77,27 @@ function nextPlayer(){
     //document.querySelector('.player-0-panel').classList.remove('active');
     //document.querySelector('.player-1-panel').classList.add('active');
 
+}
+
+document.querySelector('.btn-new').addEventListener('click',resetgame);
+
+function resetgame(){
+scores=[0,0];
+RoundScore=0;
+activePlayer=0;
+document.querySelector('.dice').style.display='none'; //to hide the dice
+document.getElementById('score-0').textContent='0';
+document.getElementById('score-1').textContent='0';
+document.getElementById('current-0').textContent='0';
+document.getElementById('current-1').textContent='0';
+document.getElementById('name-0').textContent='Player 1';
+document.getElementById('name-1').textContent='Player 2';
+
+document.querySelector('.player-0-panel').classList.remove('winner');
+document.querySelector('.player-1-panel').classList.remove('winner');
+
+document.querySelector('.player-0-panel').classList.remove('active');
+document.querySelector('.player-1-panel').classList.remove('active');
+//we remove active class everywhere , then we add the active for one only
+document.querySelector('.player-0-panel').classList.add('active');
 }
