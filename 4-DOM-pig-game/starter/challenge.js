@@ -45,14 +45,15 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
       temparray.push(dice);
     
       document.getElementById('current-'+ activePlayer).textContent=RoundScore;
-      console.log(temparray.occurrence(6));
+      
   } else if(temparray.occurrence(6)==2){
     scores[activePlayer]=0;
-
+    document.getElementById('current-'+ activePlayer).textContent=0;
+    nextPlayer();
   }
   else{
    //next player
-   nextPlayer()
+   nextPlayer();
   }
     }
 });  
