@@ -66,9 +66,16 @@ if(gamePlaying){
    scores[activePlayer]+=RoundScore;
    //update the UI
    document.getElementById('score-'+activePlayer).textContent=scores[activePlayer];
-   
+   var winingNumber=document.getElementById('numbergame').value;
+    // Undefined, 0, null or "" are COERCED to false
+        // Anything else is COERCED to true
+   if(winingNumber){
+        var winscore=winingNumber;
+   }else{
+         winscore=100;
+   }
    //check if the player win the game
-   if(scores[activePlayer]>=100){
+   if(scores[activePlayer]>=winscore){
        document.getElementById('name-'+activePlayer).textContent='Winner!';
        document.querySelector('.dice').style.display='none';
        document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');
