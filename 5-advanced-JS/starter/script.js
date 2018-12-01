@@ -29,7 +29,7 @@
 // console.log(jane.lastName);
 
 
-//Object.create
+//Object.create ,works as inheritance but in different way
 
 var personProto={
     calculateAge:function(){
