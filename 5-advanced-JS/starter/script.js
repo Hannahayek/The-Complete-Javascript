@@ -31,7 +31,7 @@
 
 //Object.create ,works as inheritance but in different way
 
-var personProto={
+/* var personProto={
     calculateAge:function(){
         console.log(2018-this.yearOfBirth);
     }
@@ -50,4 +50,45 @@ var jane=Object.create(personProto,
     job:{value:'designer'}
 
 });
+ */
+
+//primitives vs objects
+
+//primitives
+var a=23;
+var b=a;
+a=46;
+console.log(a);
+console.log(b);
+
+
+//objects
+
+var obj1={
+    name:'Hanna',
+    age:34
+};
+var obj2=obj1;
+obj1.age=30;
+console.log(obj1.age);
+console.log(obj2.age);
+
+
+//functions
+
+var age=27;
+var obj={
+    name:'Jonas',
+    city:'Libson'
+};
+
+
+function change(a,b){
+    a=30;
+    b.city='San Francisco';
+}
+
+change(age,obj);
+console.log(age); //age not changed
+console.log(obj.city);
 
