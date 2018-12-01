@@ -54,7 +54,7 @@ var jane=Object.create(personProto,
 
 //primitives vs objects
 
-//primitives
+/* //primitives
 var a=23;
 var b=a;
 a=46;
@@ -90,5 +90,42 @@ function change(a,b){
 
 change(age,obj);
 console.log(age); //age not changed
-console.log(obj.city);
+console.log(obj.city); */
+
+/////////////////////////////
+// Lecture: Passing functions as arguments
+var years=[1990,1965,1937,2005,1998];
+
+function arrayCalc(arr,fn){
+var arrRes=[];
+for(var i=0;i<arr.length;i++)
+{
+    arrRes.push(fn(arr[i]))
+}
+return arrRes;
+}
+function calculateAge(el) {
+    return 2018-el;
+    
+}
+function isFullAge(el) {
+    return el >= 18;
+}
+
+function maxHearRate(el){
+    if(el>=18 &&el <= 81){
+        return Math.round(206.9-(0.67*el));
+    }else{
+       return -1;
+    }
+    
+}
+
+
+var ages=arrayCalc(years,calculateAge);//function without () call back function
+var fullAges = arrayCalc(ages, isFullAge);
+var rates=arrayCalc(ages,maxHearRate);
+console.log(ages);
+console.log(fullAges);
+console.log(rates);
 
