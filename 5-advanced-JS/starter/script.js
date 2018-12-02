@@ -161,20 +161,63 @@ console.log(rates); */
 
     /////////////////////////
       //lecture:IIFE
-    /*   function game(){
-          var score=Math.random()*10;
-          console.log(score>=5);
-      }
-      game(); */
+     //  function game(){
+         // var score=Math.random()*10;
+          //console.log(score>=5);
+      //}
+     // game(); 
        //can be made as below IIFE function to hide variable from outside
-      (function(){
-        var score=Math.random()*10;
-        console.log(score>=5);
-      })();
+     // (function(){
+       // var score=Math.random()*10;
+       // console.log(score>=5);
+      //})();
 
       //can work with parameters
-      (function(goodluck){
-        var score=Math.random()*10;
-        console.log(score>=5-goodluck);
-      })(5);
-      //console.log(score>=5); //will be undifined
+      //(function(goodluck){
+        //var score=Math.random()*10;
+        //console.log(score>=5-goodluck);
+      //})(5);
+      //console.log(score>=5); //will be undifined 
+      //*/
+
+
+      ///////////////////////////
+          //lecture:Closues
+
+    /*       function retirement(retirementAge){
+            var a='years left until retirement.';  
+            return function(yearOfBirth){
+                  var age=2018-yearOfBirth;
+                  console.log((retirementAge-age)+a);
+              }
+          }
+          var retirementUS=retirement(66);
+          retirementUS(1984);
+         // retirement(66)(1984);
+         var retirementGermany=retirement(65);
+         var retirementIceLand=retirement(67);
+
+         retirementGermany(1984);
+         retirementIceLand(1984); */
+//lecture Functions returning functions ,but using closues
+
+function interviewQuestion(job){
+      
+   
+        return function(name){
+
+            if(job==='designer'){
+            console.log(name+',can you please explain what ux design is?');
+        }
+        else if(job==='teacher'){ 
+            console.log('what subject you teach, '+name+'?');
+        }
+        else { console.log('Hello '+name +'what do you do');
+        }
+    }
+}
+
+        var teacherQuestion=interviewQuestion('teacher');
+            teacherQuestion('hanna');
+            var designerQuestion=interviewQuestion('designer');
+            designerQuestion('jane');
