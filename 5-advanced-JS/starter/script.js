@@ -131,7 +131,7 @@ console.log(rates); */
 /////////////////////////////
 // Lecture: function returning Functions
 
-function interviewQuestion(job){
+/* function interviewQuestion(job){
 
     if(job==='designer'){
         return function(name){
@@ -156,5 +156,25 @@ function interviewQuestion(job){
     designerQuestion('mark');
 
     //or we call function to return a function in below way
-    interviewQuestion('teacher')('mark');
+    interviewQuestion('teacher')('mark'); */
 
+
+    /////////////////////////
+      //lecture:IIFE
+    /*   function game(){
+          var score=Math.random()*10;
+          console.log(score>=5);
+      }
+      game(); */
+       //can be made as below IIFE function to hide variable from outside
+      (function(){
+        var score=Math.random()*10;
+        console.log(score>=5);
+      })();
+
+      //can work with parameters
+      (function(goodluck){
+        var score=Math.random()*10;
+        console.log(score>=5-goodluck);
+      })(5);
+      //console.log(score>=5); //will be undifined
