@@ -201,7 +201,7 @@ console.log(rates); */
          retirementIceLand(1984); */
 //lecture Functions returning functions ,but using closues
 
-function interviewQuestion(job){
+/* function interviewQuestion(job){
       
    
         return function(name){
@@ -220,4 +220,77 @@ function interviewQuestion(job){
         var teacherQuestion=interviewQuestion('teacher');
             teacherQuestion('hanna');
             var designerQuestion=interviewQuestion('designer');
-            designerQuestion('jane');
+            designerQuestion('jane'); */
+
+
+            ////////////////////
+             /// Lecture:Bind,Call and apply
+
+             var john={
+             name:'John',
+             age:26,
+             job:'teacher',
+             presentation:function(style,
+                timeOfDay){
+                    if(style==='formal'){
+                        console.log('Good '+timeOfDay +', Ladies and gentlemen! I\'m '+ this.name+',I\'m a '+ this.age+' years old.');
+
+                    }else if(style==='friendly'){
+                        console.log('Hey ! what\'s up? I\'m '+ this.name+', I\'m a '+ this.age+' years old.'+'have a nice '+ timeOfDay
+                        );
+                    }
+                }
+             }
+
+
+             var emily={
+                 name:'Emily',
+                 age:35,
+                 job:'designer'
+             }
+             john.presentation('formal','morning');
+              
+             //method borrowing
+             //to call function for emily 
+             john.presentation.call(emily,'friendly','afternoon');
+
+             //apply method  //but will fail here, not expecting array
+            // john.presentation.apply(emily,['friendly','afternoon']);
+         
+
+            //Bind method. create a function to store it
+
+            var johnFriendly=john.presentation.bind(john,'friendly');
+
+            johnFriendly('morning');
+            johnFriendly('night');
+
+            var emilyFormal=john.presentation.bind(emily,'formal');
+          emilyFormal('afternoon');
+
+
+
+          
+var years=[1990,1965,1937,2005,1998];
+
+function arrayCalc(arr,fn){
+var arrRes=[];
+for(var i=0;i<arr.length;i++)
+{
+    arrRes.push(fn(arr[i]))
+}
+return arrRes;
+}
+function calculateAge(el) {
+    return 2018-el;
+    
+}
+function isFullAge(limit,el) {
+    return el >= limit;
+}
+
+var ages=arrayCalc(years,calculateAge);
+//will pass 20 in isFullAge as preset argument
+var fullJapan=arrayCalc(ages,isFullAge.bind(this,20));
+console.log(ages);
+console.log(fullJapan);
