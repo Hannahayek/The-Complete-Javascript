@@ -332,16 +332,29 @@ Question.prototype.displayQuestion=function(){
    }
    }
    //5 6
-   Question.prototype.checkAnswer=function(){
-       var useranswer=parseInt(prompt("enter your answer please"));
-       if(useranswer==this.correctAnswer){
+   Question.prototype.checkAnswer=function(answer,scoreTrack){
+      var score;
+       if(answer===this.correctAnswer){
            console.log("correct answer");
+         //to pass true or falce to the function scoreCalc
+         //we pass it after value entered
+         score = scoreTrack(true);
+         
        }else{
            console.log("wrong answer");
+           score = scoreTrack(false);
+         
        }
+       this.displayScore(score);
        //console.log("correct answer:"+this.answers);
       // console.log("uer answer:"+useranswer);
-   }
+       //console.log("result: "+scoreTrack);
+    }
+    Question.prototype.displayScore = function(score) {
+        console.log('Your current score is: ' + score);
+        console.log('------------------------------');
+    }
+
 
 //2
    var q1 = new Question('Is JavaScript the coolest programming language in the world?',
@@ -358,25 +371,33 @@ Question.prototype.displayQuestion=function(){
 //3
     var allQuestions=[q1,q2,q3];
     
-    var randomN=Math.floor(Math.random()*allQuestions.length);
+
  
-    allQuestions[randomN].displayQuestion();
-    allQuestions[randomN].checkAnswer();
+    function score() {
+        var count = 0;
+        return function(correctAnswer) {
+            if (correctAnswer) {
+                count++;
+            }
+            return count;
+        }
+    }
+    var keepScore = score();
+    
+    
+    function nextQuestion() {
+
+        var n = Math.floor(Math.random() * allQuestions.length);
+        allQuestions[n].displayQuestion();
+
+        var answer = prompt('Please select the correct answer.');
+
+        if(answer !== 'exit') {
+            allQuestions[n].checkAnswer(parseInt(answer), keepScore);
+            
+            nextQuestion();
+        }
+    }
+    
     nextQuestion();
-
-  })();
-
-
-  /*
---- Expert level ---
-
-8. After you display the result, display the next random question, so that the game never ends (Hint: write a function for this and call it right after displaying the result)
-
-9. Be careful: after Task 8, the game literally never ends. So include the option to quit the game if the user writes 'exit' instead of the answer. In this case, DON'T call the function from task 8.
-
-10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score (Hint: I'm going to use the power of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
-
-11. Display the score in the console. Use yet another method for this.
-*/
-
-
+})();
