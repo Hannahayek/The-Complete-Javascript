@@ -99,8 +99,13 @@ var DOMstring={
     inputValue:'.add__value',
     inputBtn:'.add__btn',
     incomeContainer:'.income__list',
-    expensesContainer:'.expenses__list'
-}
+    expensesContainer:'.expenses__list',
+    budgetLabel:'.budget__value',
+    incomeLabel:'.budget__income--value',
+    expenseLabel:'.budget__expenses--value',
+    percentageLabel:'.budget__expenses--percentage'
+
+};
   return {
       getinput:function(){
           return{
@@ -147,6 +152,19 @@ var DOMstring={
         //set focus back to description 
         fieldsArr[0].focus();
       },
+      displayBudget:function(obj){
+          document.querySelector(DOMstring.budgetLabel).textContent=obj.budget;
+          document.querySelector(DOMstring.incomeLabel).textContent=obj.totalInc;
+          document.querySelector(DOMstring.expenseLabel).textContent=obj.totalExp;
+          
+         
+          if(obj.percentage>0){
+            document.querySelector(DOMstring.percentageLabel).textContent=obj.percentage+'%';
+          }else {
+            document.querySelector(DOMstring.percentageLabel).textContent='---';
+          }
+
+      },
       //here we make it public so can be accessed by other controllers
       getDomStrings:function(){
           return DOMstring;
@@ -180,9 +198,10 @@ budgetCtrl.calculateBudget();
 
 //2. Return the budget
 var budget=budgetController.getBudget();
-console.log(budget);
+
 
 //3. Display the budget in UI
+UICtrl.displayBudget(budget);
 };
 
 
@@ -211,6 +230,12 @@ newItem=budgetCtrl.addItem(input.type,input.description,input.value);
  return {
      init:function(){
          console.log("application started");
+         UICtrl.displayBudget({
+            budget:0,
+            totalInc:0,
+            totalExp:0,
+            percentage:-1
+         });
          setupEventListeners();
      }
  };
