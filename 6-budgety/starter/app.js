@@ -180,6 +180,14 @@ var formatNumber=function(num,type){
          dec=numSplit[1];
          return (type==='exp' ? sign='-':sign='+')+ ' '+int+'.'+dec;
   };
+
+  var nodeListForEach=function(list,callback){
+    for(var i=0;i<list.length;i++){
+        callback(list[i],i);
+    }
+
+   };
+
   return {
       getinput:function(){
           return{
@@ -251,12 +259,7 @@ var formatNumber=function(num,type){
 
       displayPercentages:function(percentages){
            var fields=document.querySelectorAll(DOMstring.expensesPercLabel);
-           var nodeListForEach=function(list,callback){
-            for(var i=0;i<list.length;i++){
-                callback(list[i],i);
-            }
-
-           };
+          
            nodeListForEach(fields,function(current,index){
                if(percentages[index]>0){
                 current.textContent=percentages[index] +'%';
@@ -276,7 +279,16 @@ var formatNumber=function(num,type){
        document.querySelector(DOMstring.dateLabel).textContent=months[month]+' '+year;
        
       },
-
+      changeType:function(){
+       var fields=document.querySelectorAll(
+        DOMstring.inputType+','+
+        DOMstring.inputDescription+','+
+        DOMstring.inputValue);   
+          nodeListForEach(fields,function(cur){
+            cur.classList.toggle('red-focus');
+          });
+          document.querySelector(DOMstring.inputBtn).classList.toggle('red');
+         },
      
       //here we make it public so can be accessed by other controllers
       getDomStrings:function(){
@@ -303,6 +315,7 @@ var controller=(function(budgetCtrl,UICtrl){
     });
     
     document.querySelector(DOM.container).addEventListener('click',CtrDeleteItem);
+    document.querySelector(DOM.inputType).addEventListener('change',UICtrl.changeType);
  };
 
  //1. Calculate the budget
