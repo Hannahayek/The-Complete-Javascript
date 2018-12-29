@@ -153,7 +153,8 @@ var DOMstring={
     incomeLabel:'.budget__income--value',
     expenseLabel:'.budget__expenses--value',
     percentageLabel:'.budget__expenses--percentage',
-    container:'.container'
+    container:'.container',
+    expensesPercLabel:".item__percentage"
     
 
 };
@@ -223,6 +224,24 @@ var DOMstring={
           }
 
       },
+
+      displayPercentages:function(percentages){
+           var fields=document.querySelectorAll(DOMstring.expensesPercLabel);
+           var nodeListForEach=function(list,callback){
+            for(var i=0;i<list.length;i++){
+                callback(list[i],i);
+            }
+
+           };
+           nodeListForEach(fields,function(current,index){
+               if(percentages[index]>0){
+                current.textContent=percentages[index] +'%';
+               } else {
+                   current.textContent='---';
+               }
+               
+           });
+      },
       //here we make it public so can be accessed by other controllers
       getDomStrings:function(){
           return DOMstring;
@@ -269,7 +288,7 @@ budgetCtrl.calculatePercentages();
 //2. read them from the budget controller 
 var percentages=budgetCtrl.getPercentages();
 //3. update the UI with the new percentages
-console.log(percentages);
+UICtrl.displayPercentages(percentages);
 };
 
 var ctrlAddItem=function(){
