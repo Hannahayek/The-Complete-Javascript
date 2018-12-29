@@ -166,6 +166,13 @@ var DOMstring={
         document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
 
       },
+
+
+      deleteListItem:function(selectorID){
+
+        var el= document.getElementById(selectorID);
+       el.parentNode.removeChild(el);
+      },
       clearFields:function(){
           var fields,fieldsArr;
         fields= document.querySelectorAll(DOMstring.inputDescription+','+DOMstring.inputValue);
@@ -265,8 +272,10 @@ itemID=event.target.parentNode.parentNode.parentNode.parentNode.id
   budgetCtrl.deleteItem(type,ID);
 
    //2. delete the item from the UI
+    UICtrl.deleteListItem(itemID);
 
    //3.  update and show the new budget 
+    updateBudget();
  }else {
 
  }
