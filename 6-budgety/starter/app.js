@@ -236,6 +236,11 @@ var budget=budgetController.getBudget();
 UICtrl.displayBudget(budget);
 };
 
+var updatePercentage=function(){
+//1. calculate the percentage
+//2. read them from the budget controller 
+//3. update the UI with the new percentages
+};
 
 var ctrlAddItem=function(){
   var input,newItem;  
@@ -253,6 +258,10 @@ newItem=budgetCtrl.addItem(input.type,input.description,input.value);
 
   //5.Calculate and update budget
   updateBudget();
+
+  //6. Calculate and update the percentage
+
+  updatePercentage();
 };
 }
 
@@ -276,6 +285,9 @@ itemID=event.target.parentNode.parentNode.parentNode.parentNode.id
 
    //3.  update and show the new budget 
     updateBudget();
+
+    //4. Calculate and update the percentage
+    updatePercentage();
  }else {
 
  }
