@@ -158,6 +158,27 @@ var DOMstring={
     
 
 };
+var formatNumber=function(num,type){
+    var numSplit,int,dec;
+    /*
+     + or - before number
+     exactly 2 decimal points
+     comman seprating the thousands
+     2310.4567 > +2,2310.46
+     2000 > +2,000
+     */
+      num=Math.abs(num);   //will make absolute number
+      num=num.toFixed(2);  //will add to decimals and convert to string
+
+      numSplit=num.split('.');
+      int=numSplit[0];
+      if(int.length>3){
+        int=int.substr(0,int.length-3) + ',' +int.substr(int.length-3,int.length); //input 23510 ,output 23,310
+      }  
+
+         dec=numSplit[1];
+         return (type==='exp' ? sign='-':sign='+')+ ' '+int+'.'+dec;
+  };
   return {
       getinput:function(){
           return{
@@ -187,7 +208,7 @@ var DOMstring={
          newHtml=html.replace('%id%',obj.id);
          //note:after first replace we start replacing with new html,because aready replaced
          newHtml=newHtml.replace('%description%',obj.description);
-         newHtml=newHtml.replace('%value%',obj.value);
+         newHtml=newHtml.replace('%value%',formatNumber(obj.value,type));
 
         //insert the HTML into the DOM
         document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
@@ -212,7 +233,9 @@ var DOMstring={
         fieldsArr[0].focus();
       },
       displayBudget:function(obj){
-          document.querySelector(DOMstring.budgetLabel).textContent=obj.budget;
+        var type;  
+        obj.budget >0? type='inc':type='exp';
+          document.querySelector(DOMstring.budgetLabel).textContent=formatNumber(obj.budget,type);
           document.querySelector(DOMstring.incomeLabel).textContent=obj.totalInc;
           document.querySelector(DOMstring.expenseLabel).textContent=obj.totalExp;
           
@@ -242,6 +265,8 @@ var DOMstring={
                
            });
       },
+
+     
       //here we make it public so can be accessed by other controllers
       getDomStrings:function(){
           return DOMstring;
