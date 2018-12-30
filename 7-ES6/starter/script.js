@@ -40,3 +40,25 @@ function driverLicence6(passedTest){
 }
 
 driverLicence6(true);
+
+///////////////////////////
+//Lecture: Blocks and IIFEs
+
+//ES6
+{
+    const a=1;
+    let b=2;
+var c=3;
+}
+
+//console.log(a+b); // a b not accessable from outside
+console.log(c); //can be accessesd 
+
+
+//ES5
+
+
+(function(){
+      var c=3;
+})();
+//console.log(c); //not accessable from outside in ES5
