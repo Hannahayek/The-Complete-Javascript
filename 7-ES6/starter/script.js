@@ -62,3 +62,32 @@ console.log(c); //can be accessesd
       var c=3;
 })();
 //console.log(c); //not accessable from outside in ES5
+
+
+//////////////////////////////
+// Lecture:Strings
+
+
+let firstName="hanna";
+let lastName='hayek';
+const yearOfBirth=1984;
+function calcAge(year){
+    return 2018-year;
+}
+
+//ES5
+console.log('this is '+firstName+' '+lastName+' .'+'he was born in '+yearOfBirth+' today he is '+ calcAge(yearOfBirth)+ ' years old.');
+
+//ES6
+
+console.log(`this is ${firstName}
+${lastName}. he was born in ${yearOfBirth} he is ${calcAge(yearOfBirth)}`);
+
+const n=`${firstName} ${lastName}`;
+
+console.log(n.startsWith('h'));
+console.log(n.endsWith('ek'));
+console.log(n.includes(' '));
+console.log(n.includes('han'));
+console.log(firstName.repeat(5));
+console.log(`${firstName} `.repeat(5));
