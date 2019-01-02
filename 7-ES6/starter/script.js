@@ -314,8 +314,30 @@ const h=document.querySelector('h1');
 const boxes1=document.querySelectorAll('.box');
 
 const all=[h,...boxes1];
-//we conver node list returned by queary selected to array
+//we convert node list returned by queary selected to array
 
 Array.from(all).forEach(cur =>
     cur.style.color='green');
 
+
+    ///////////////////////////
+//Lecture: Rest Parameters
+
+function isFullAge5(limit){
+    //slice arguments ,1 copy to array start from poistion 1
+   
+   var argsArr=Array.prototype.slice.call(arguments,1);
+
+   argsArr.forEach(function(cur){
+     console.log((2016-cur) >=limit);
+   });
+}
+
+//isFullAge5(21,1999,1965,2016,1987);
+
+//ES6
+//will transform the arguments to array and pass to function
+function isFullAge6(limit,...years){
+years.forEach(cur => console.log((2018-cur)>=limit));
+}
+isFullAge6(21,1999,1965,2016,1987);
