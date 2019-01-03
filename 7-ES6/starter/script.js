@@ -444,3 +444,31 @@ class Person6{
 
 const john6=new Person6('John',1984,'worker')
 Person6.greeting();
+
+
+
+//Lecture: Classes with Subclasses
+
+//ES5
+
+var Person5=function(name,yearOfBirth,job){
+    this.name=name;
+    this.yearOfBirth=yearOfBirth;
+    this.job=job;
+}
+
+Person5.prototype.calculateAge=function(){
+    var age=new Date().getFullYear-this.yearOfBirth;
+    console.log(age);
+}
+
+var Athelete5=function(name,yearOfBirth,job,olympicGames,medals)
+{
+Person5.call(this,name,yearOfBirth,job);
+this.olympicGames=olympicGames;
+this.medals=medals;
+}
+
+Athelete5.prototype=Object.create(Person5.prototype);
+
+var johnathelete5=new Athelete5('john',1990,'swimmer',3,10);
