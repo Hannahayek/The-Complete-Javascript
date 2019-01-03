@@ -412,7 +412,7 @@ console.log(question.get(ans===question.get('correct'))); */
 
 //ES5
 
-var Person5=function(name,yearOfBirth,job){
+/* var Person5=function(name,yearOfBirth,job){
     this.name=name;
     this.yearOfBirth=yearOfBirth;
     this.job=job;
@@ -422,12 +422,12 @@ Person5.prototype.calculateAge=function(){
     var age=new Date().getFullYear-this.yearOfBirth;
     console.log(age);
 }
-var john5=new Person5('john',1990,'teacher');
+var john5=new Person5('john',1990,'teacher'); */
 
 
 //ES6
 
-class Person6{
+/* class Person6{
     constructor(name,yearOfBirth,job){
         this.name=name;
         this.yearOfBirth=yearOfBirth;
@@ -443,7 +443,7 @@ class Person6{
 }
 
 const john6=new Person6('John',1984,'worker')
-Person6.greeting();
+Person6.greeting(); */
 
 
 
@@ -458,7 +458,7 @@ var Person5=function(name,yearOfBirth,job){
 }
 
 Person5.prototype.calculateAge=function(){
-    var age=new Date().getFullYear-this.yearOfBirth;
+    var age=new Date().getFullYear()-this.yearOfBirth;
     console.log(age);
 }
 
@@ -470,5 +470,43 @@ this.medals=medals;
 }
 
 Athelete5.prototype=Object.create(Person5.prototype);
+Athelete5.prototype.wonMedal=
+function(){
+    this.medals++;
+    console.log(this.medals);
 
+}
 var johnathelete5=new Athelete5('john',1990,'swimmer',3,10);
+johnathelete5.calculateAge();
+johnathelete5.wonMedal();
+
+//ES6
+class Person6{
+    constructor(name,yearOfBirth,job){
+        this.name=name;
+        this.yearOfBirth=yearOfBirth;
+        this.job=job;
+    }
+    calculateAge(){
+        var age=new Date().getFullYear()-this.yearOfBirth;
+        console.log(age);
+    }
+    
+}
+
+class Athelete6 extends Person6{
+    constructor(name,yearOfBirth,job,olympicGames,medals){
+    super(name,yearOfBirth,job);
+    this.olympicGames=olympicGames;
+    this.medal=medals;
+    }
+    wonMedal(){
+        this.medal++;
+        console.log(this.medal);
+    }
+}
+
+var johnathelete6=new Athelete6('john',1984,'swimmer',3,7);
+
+johnathelete6.wonMedal();
+johnathelete6.calculateAge();
