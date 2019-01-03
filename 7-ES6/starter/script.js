@@ -370,3 +370,39 @@ nationality='american'){
 
 var john=new SmithPerson('john',1990);
 var emily=new SmithPerson('emily',1983,'Diaz','spanish')
+
+
+///////////////////////////
+//Lecture: Maps
+
+const question=new Map();
+question.set('question','what is the official name of the latest major java script version ?');
+question.set(1,'ES5');
+question.set(2,'ES6');
+question.set(3,'ES2015');
+question.set(4,'ES7');
+question.set('correct',3);
+question.set(true,'Correct answer');
+question.set(false,'Wrong,please try again!');
+console.log(question.get('question'));
+console.log(question.size);
+if(question.has(4)){
+   // question.delete(4);
+  // console.log('is has answer 4');
+}
+//question.clear();
+
+/* question.forEach((value,key)=>
+console.log(`this is ${key},and it is set to ${value}`)); */
+
+
+// below works same as above
+for(let [key,value] of question.entries()){
+    //console.log(`this is ${key},and it is set to ${value}`);
+    if(typeof(key)==='number'){
+        console.log(`Answer ${key}: ${value}`)
+    }
+}
+
+const ans=parseInt(prompt('Write the correct answer'));
+console.log(question.get(ans===question.get('correct')));
