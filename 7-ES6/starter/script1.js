@@ -112,7 +112,7 @@ console.log("-----Streeets Report");
      s.forEach(cur=> cur.classifyStreet());
 
 
-     //total avera
+     //total average
 
      const totalstreets=s.map(cur => cur.length);
      const[totalleng,avglenth]=calcArr(totalstreets);
