@@ -59,7 +59,9 @@
                }, 1500,publisher);
              });
            };
-           getIDs
+
+           //2016 consume primises 
+          /*  getIDs
            .then(IDs=>{
                 console.log(IDs);
               return getRecipe(IDs[2]);
@@ -73,9 +75,18 @@
            })
            .catch(error =>{
                console.log(error);
-           });
+           }); */
+       //2017 consume primises 
+  async function getRecipesAW(){
+    const IDs=await getIDs;
+    console.log(IDs);
+    const recipe=await getRecipe(IDs[2]);
+    console.log(recipe);
+    const related=await getRelated('Jonas');
+    console.log(related);
+  }
 
-
+  getRecipesAW();
     </script>
 </body>
 </html>
