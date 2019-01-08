@@ -1,6 +1,6 @@
 {
     
-    "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+    "workbench.colorTheme": "Oceanic Next",
         "files.autoSave": "onFocusChange",
         "editor.minimap.enabled": true,
         "workbench.statusBar.visible": true,
