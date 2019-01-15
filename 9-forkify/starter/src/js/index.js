@@ -25,7 +25,7 @@ const controlSearch= async ()=>{
        await state.search.getResults();
        //5) Render Results to UI
        clearLoader();
-      searchView.renderResults(state.search.result)
+       searchView.renderResults(state.search.result);
 
    }
 }
@@ -34,3 +34,12 @@ e.preventDefault();
 controlSearch();
 });
 
+elements.searchResPages.addEventListener('click',e=>{
+const btn=e.target.closest('.btn-inline');
+  if(btn){
+     //this will get the number of page as string
+     const goToPage=parseInt(btn.dataset.goto,10);
+     searchView.clearResults();
+     searchView.renderResults(state.search.result,goToPage);
+  }
+});
