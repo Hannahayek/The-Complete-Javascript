@@ -24,11 +24,19 @@ const controlSearch= async ()=>{
        searchView.clearResults();
      
        renderLoader(elements.searchRes);
-       //4) search for recipes 
+
+
+       try {
+          //4) search for recipes 
        await state.search.getResults();
        //5) Render Results to UI
        clearLoader();
        searchView.renderResults(state.search.result);
+       } catch (error) {
+          console.log("error in search");
+          clearLoader();
+       }
+       
 
    }
 }
@@ -53,6 +61,37 @@ const btn=e.target.closest('.btn-inline');
 /**
  *RECIPE CONTROLLER
  */
+const controlRecipe= async ()=>{
+   //Get ID from url
+   const id=window.location.hash.replace('#','');
+   
+    if(id){
+       //prepare UI for changes
 
- const r=new Recipe(47746);
- r.getRecipe();
+       //create new recipe object
+         state.recipe=new Recipe(id);
+         try {
+            //Get Recipe data
+        await state.recipe.getRecipe();
+
+        //Calculate servings and time
+           state.recipe.calcTime();
+           state.recipe.calcServings();
+ 
+        //Render Recipe
+        console.log(state.recipe);
+         } catch (error) {
+              console.log(error);
+         }
+       
+    }
+   console.log(id);
+};
+
+
+/* window.addEventListener('hashchange',controlRecipe);
+window.addEventListener('load',controlRecipe); */
+//can be done as below
+
+['hashchange','load'].forEach(event=>window.addEventListener(event,controlRecipe));
+ 

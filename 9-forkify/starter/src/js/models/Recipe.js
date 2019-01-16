@@ -16,7 +16,7 @@ export default class Recipe{
             console.log(res);
         } catch (error) {
            console.log(error); 
-           alert('Somethings wen wrong :(');
+           alert('Somethings went wrong :(');
         } 
     }
     calcTime(){
@@ -26,7 +26,7 @@ export default class Recipe{
         this.time=periods*15;
     }
 
-    calcServigns(){
+    calcServings(){
         this.servings=4;
     }
 }
