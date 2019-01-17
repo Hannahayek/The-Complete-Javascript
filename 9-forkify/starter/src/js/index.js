@@ -13,8 +13,11 @@ const state={};
  */
 const controlSearch= async ()=>{
 // 1)Get query from view
-   const query=searchView.getInput();
+   //const query=searchView.getInput();
    
+   //testing 
+   const query='pizza';
+
 
    if(query){
        //2) New search object and add to state
@@ -45,6 +48,12 @@ e.preventDefault();
 controlSearch();
 });
 
+//testing
+window.addEventListener('load',e=>{
+   e.preventDefault();
+   controlSearch();
+   });
+
 elements.searchResPages.addEventListener('click',e=>{
 const btn=e.target.closest('.btn-inline');
   if(btn){
@@ -70,6 +79,8 @@ const controlRecipe= async ()=>{
 
        //create new recipe object
          state.recipe=new Recipe(id);
+         //testing
+         window.rap=state.recipe;
          try {
             //Get Recipe data
         await state.recipe.getRecipe();
