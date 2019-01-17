@@ -13,10 +13,9 @@ const state={};
  */
 const controlSearch= async ()=>{
 // 1)Get query from view
-   //const query=searchView.getInput();
+   const query=searchView.getInput();
    
-   //testing 
-   const query='pizza';
+ 
 
 
    if(query){
@@ -48,11 +47,7 @@ e.preventDefault();
 controlSearch();
 });
 
-//testing
-window.addEventListener('load',e=>{
-   e.preventDefault();
-   controlSearch();
-   });
+
 
 elements.searchResPages.addEventListener('click',e=>{
 const btn=e.target.closest('.btn-inline');
@@ -82,8 +77,9 @@ const controlRecipe= async ()=>{
          //testing
          window.rap=state.recipe;
          try {
-            //Get Recipe data
+            //Get Recipe data and parse ingredients
         await state.recipe.getRecipe();
+        state.recipe.parseIngredients();
 
         //Calculate servings and time
            state.recipe.calcTime();
