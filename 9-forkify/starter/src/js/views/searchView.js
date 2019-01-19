@@ -13,7 +13,7 @@ export const clearResults=()=>{
 };
 
 export const highlightedSeclected=id=>{
-    const resultArr=Array.for(document.querySelectorAll('.results__link'));
+    const resultArr=Array.from(document.querySelectorAll('.results__link'));
     resultArr.forEach(el=>{
         el.classList.remove('results__link--active');
     })

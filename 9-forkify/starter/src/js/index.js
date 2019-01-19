@@ -77,8 +77,6 @@ const controlRecipe= async ()=>{
        //high light selected search item
        if(state.search) searchView.highlightedSeclected(id);
          
-       
-       
         //create new recipe object
          state.recipe=new Recipe(id);
         
