@@ -12,6 +12,14 @@ export const clearResults=()=>{
 
 };
 
+export const highlightedSeclected=id=>{
+    const resultArr=Array.for(document.querySelectorAll('.results__link'));
+    resultArr.forEach(el=>{
+        el.classList.remove('results__link--active');
+    })
+  document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+};
+
 //Pasta with Tomato and spanish
 //acc: 0 /acc+cir.length=5 newTitle=[Pasta] 
 //acc:5/ acc+cur.length=9 /newTitle=['Pasta' ,'with']
