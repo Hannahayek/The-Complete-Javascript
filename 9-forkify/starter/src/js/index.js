@@ -3,6 +3,7 @@ import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import {elements,renderLoader,clearLoader} from './views/base';
+import List from './models/List';
 /**Global state of the app */
 /**-Search object */
 /**-Current recipe  object*/
@@ -123,6 +124,10 @@ window.addEventListener('load',controlRecipe); */
       }
       console.log(state.recipe);
   });
+
+
+ window.l=new List();
+
 
 
 
