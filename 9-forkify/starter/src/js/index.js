@@ -4,6 +4,7 @@ import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 import {elements,renderLoader,clearLoader} from './views/base';
 import List from './models/List';
 /**Global state of the app */
@@ -164,7 +165,7 @@ window.addEventListener('load',controlRecipe); */
            );
 
         //toggle the like button
-        
+        likesView.toggleLikeBtn(true);
 
         //add like to the UI list
           console.log(state.likes);
@@ -174,7 +175,7 @@ window.addEventListener('load',controlRecipe); */
          state.likes.deleteLike(currentID);
 
         //toggle the like button
-        
+        likesView.toggleLikeBtn(false);
 
         //remove like from the UI list
         console.log(state.likes);
