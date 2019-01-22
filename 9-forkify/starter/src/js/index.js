@@ -96,7 +96,10 @@ const controlRecipe= async ()=>{
  
         //Render Recipe
         clearLoader();
-        recipeView.renderRecipe(state.recipe);
+        recipeView.renderRecipe(
+           state.recipe,
+         state.likes.isLiked(id));
+
          } catch (error) {
               console.log(error);
          }
@@ -150,7 +153,13 @@ window.addEventListener('load',controlRecipe); */
   /**
  * LIKES CONTROLLER
  */
+//testing
+  state.likes=new Likes();
+  
+  
+
    const controlLike=()=>{
+      
      if(!state.likes) state.likes=new Likes();
 
       const currentID=state.recipe.id;
@@ -168,7 +177,9 @@ window.addEventListener('load',controlRecipe); */
         likesView.toggleLikeBtn(true);
 
         //add like to the UI list
-          console.log(state.likes);
+        likesView.rednerLike(newLike);
+        console.log(newLike);
+         
       //user has  liked current recipe
       }else{
           //remove like to the state
@@ -178,11 +189,11 @@ window.addEventListener('load',controlRecipe); */
         likesView.toggleLikeBtn(false);
 
         //remove like from the UI list
-        console.log(state.likes);
+        likesView.deleteLike(currentID);
       
        
       }
-
+      likesView.toggleLikeMenu(state.likes.getNumLikes());
    };
 
 
