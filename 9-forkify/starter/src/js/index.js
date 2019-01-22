@@ -153,8 +153,8 @@ window.addEventListener('load',controlRecipe); */
   /**
  * LIKES CONTROLLER
  */
-//testing
-  state.likes=new Likes();
+
+  
   
   
 
@@ -193,8 +193,23 @@ window.addEventListener('load',controlRecipe); */
       
        
       }
-      likesView.toggleLikeMenu(state.likes.getNumLikes());
+      
    };
+
+//Restore liked recipes on page load
+ window.addEventListener('load',()=>{
+   state.likes=new Likes();
+   //restore likes
+   state.likes.readStorage();
+
+   //toggle the button
+
+   likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+   //render the existing likes
+
+   state.likes.likes.forEach(like=>likesView.rednerLike(like));
+ });
 
 
 //handling recipe button clicks
