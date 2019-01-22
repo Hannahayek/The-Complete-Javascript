@@ -13,7 +13,7 @@ import List from './models/List';
 /**-Shopping List  object*/
 /**- Liked recipes*/
 const state={};
-window.state=state;
+
 /**
  *SEARCH CONTROLLER
  */
@@ -105,7 +105,7 @@ const controlRecipe= async ()=>{
          }
        
     }
-   console.log(id);
+   
 };
 
 
@@ -178,7 +178,7 @@ window.addEventListener('load',controlRecipe); */
 
         //add like to the UI list
         likesView.rednerLike(newLike);
-        console.log(newLike);
+      
          
       //user has  liked current recipe
       }else{
